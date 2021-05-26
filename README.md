@@ -2,9 +2,21 @@
 
 Simple interface for storing and serving strings.
 
-## Release
+## Deployment
 
-The project is setup to be released on [Sonatype OSSRH](https://oss.sonatype.org).
+The project is setup to be released on [Sonatype OSSRH](https://s01.oss.sonatype.org).
+
+### Performing a Snapshot Deployment
+
+Snapshot deployment are performed when the version ends in `-SNAPSHOT`.
+
+```
+mvn clean deploy
+```
+
+Successfully deployed SNAPSHOT versions will be found in [Sonatype OSSRH](https://s01.oss.sonatype.org/content/repositories/snapshots/)
+
+### Performing a Release Deployment
 
 Main steps for the release:
 
@@ -13,15 +25,13 @@ Main steps for the release:
 mvn versions:set -DnewVersion=0.0.1
 
 # Deploy
-mvn clean deploy
+mvn clean deploy -P release
 ```
 
-Clean up
+### Performing a Release Deployment with the Maven Release Plugin
 
 ```
-# remove the pomBackup file
-mvn versions:commit
+mvn release:clean release:prepare
 
-# back to previous version
-mvn versions:revert
+mvn release:perform
 ```
