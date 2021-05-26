@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.plooh.adssi</groupId>
 	<artifactId>string-store</artifactId>
-	<version>0.0.4-SNAPSHOT</version>
+	<version>0.0.4</version>
 	<name>string-store</name>
 	<description>Store Strings</description>
 	<packaging>pom</packaging>
@@ -28,7 +28,7 @@
 		<connection>scm:git:git://github.com/aps-lab/string-store.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com/aps-lab/string-store.git</developerConnection>
 		<url>https://github.com/aps-lab/string-store</url>
-		<tag>HEAD</tag>
+		<tag>string-store-0.0.4</tag>
   </scm>
 
 	<properties>
