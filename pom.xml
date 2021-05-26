@@ -28,7 +28,6 @@
 		<connection>scm:git:git://github.com/aps-lab/string-store.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com/aps-lab/string-store.git</developerConnection>
 		<url>https://github.com/aps-lab/string-store</url>
-	  <tag>string-store-0.0.2</tag>
   </scm>
 
 	<properties>
