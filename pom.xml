@@ -7,7 +7,7 @@
 	<name>string-store</name>
 	<description>Store Strings</description>
 	<packaging>pom</packaging>
-	<url>https://github.com/aps-lab/string-store</url>
+	<url>https://github.com/dialchain/string-store</url>
 
 	<licenses>
 		<license>
@@ -20,14 +20,19 @@
 		<developer>
 			<name>Francis Pouatcha</name>
 			<email>francis.pouatcha@plooh.com</email>
-			<organizationUrl>https://github.com/aps-lab</organizationUrl>
+			<organizationUrl>https://github.com/dialchain</organizationUrl>
+		</developer>
+		<developer>
+			<name>Willie Chieukam</name>
+			<email>willie.chieukam@plooh.com</email>
+			<organizationUrl>https://github.com/dialchain</organizationUrl>
 		</developer>
 	</developers>
 
 	<scm>
-		<connection>scm:git:git://github.com/aps-lab/string-store.git</connection>
-		<developerConnection>scm:git:ssh://git@github.com/aps-lab/string-store.git</developerConnection>
-		<url>https://github.com/aps-lab/string-store</url>
+		<connection>scm:git:git://github.com/dialchain/string-store.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/dialchain/string-store.git</developerConnection>
+		<url>https://github.com/dialchain/string-store</url>
 		<tag>HEAD</tag>
   </scm>
 
@@ -38,6 +43,11 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<spring-boot.version>2.3.3.RELEASE</spring-boot.version>
+
+		<expiringmap.version>0.5.10</expiringmap.version>
+		<junit-platform.version>5.3.1</junit-platform.version>
+		<maven-surefire-plugin.version>2.22.0</maven-surefire-plugin.version>
+		<maven-failsafe-plugin.version>2.22.0</maven-failsafe-plugin.version>
 	</properties>
 
 	<modules>
@@ -61,6 +71,11 @@
 				<artifactId>store-api</artifactId>
 				<version>${project.version}</version>
 			</dependency>
+			<dependency>
+				<groupId>net.jodah</groupId>
+				<artifactId>expiringmap</artifactId>
+				<version>${expiringmap.version}</version>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 
@@ -74,6 +89,21 @@
 			<url>https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/</url>
 		</repository>
 	</distributionManagement>
+
+	<dependencies>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-api</artifactId>
+			<version>${junit-platform.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.junit.jupiter</groupId>
+			<artifactId>junit-jupiter-engine</artifactId>
+			<version>${junit-platform.version}</version>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
 
 	<build>
 		<plugins>
@@ -126,6 +156,31 @@
 					<useReleaseProfile>false</useReleaseProfile>
 					<releaseProfiles>release</releaseProfiles>
 					<goals>deploy</goals>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.8.0</version>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>${maven-surefire-plugin.version}</version>
+				<configuration>
+					<argLine>
+						--illegal-access=permit
+					</argLine>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>${maven-failsafe-plugin.version}</version>
+				<configuration>
+					<argLine>
+						--illegal-access=permit
+					</argLine>
 				</configuration>
 			</plugin>
 		</plugins>
