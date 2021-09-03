@@ -15,6 +15,10 @@
 			<groupId>com.plooh.adssi</groupId>
 			<artifactId>store-api</artifactId>
 		</dependency>
+		<dependency>
+			<groupId>net.jodah</groupId>
+			<artifactId>expiringmap</artifactId>
+		</dependency>
 	</dependencies>
 
 </project>
