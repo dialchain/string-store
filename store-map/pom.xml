@@ -4,7 +4,7 @@
 	<parent>
 		<groupId>com.plooh.adssi</groupId>
 		<artifactId>string-store</artifactId>
-		<version>0.0.5-SNAPSHOT</version>
+		<version>0.0.5</version>
 	</parent>
 	<artifactId>store-map</artifactId>
 	<name>store-map</name>
