@@ -12,7 +12,7 @@ import net.jodah.expiringmap.ExpiringMap;
  */
 public class MapStringStore implements StringStore {
 
-    private static final int DEFAULT_MAX_SIZE = 1000;
+    private static final int DEFAULT_MAX_SIZE = 1000000;
     private static final int DEFAULT_DURATION = 1;
 
     private static ExpiringMap<String, String> map = ExpiringMap.builder()
