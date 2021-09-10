@@ -15,11 +15,27 @@ public class MapStringStore implements StringStore {
     private static final int DEFAULT_MAX_SIZE = 1000000;
     private static final int DEFAULT_DURATION = 1;
 
-    private static ExpiringMap<String, String> map = ExpiringMap.builder()
-        .maxSize(DEFAULT_MAX_SIZE)
-        .variableExpiration()
-        .expirationPolicy(ExpirationPolicy.ACCESSED)
-        .build();
+    private final ExpiringMap<String, String> map;
+    private final int duration;
+
+    public MapStringStore(final int maxSize, final int durationSec){
+        if (maxSize <= 0){
+            throw new IllegalArgumentException("maxSize must be > 0");
+        }
+        if (durationSec <= 0){
+            throw new IllegalArgumentException("duration (sec) must be > 0");
+        }
+        map = ExpiringMap.builder()
+            .maxSize(maxSize)
+            .variableExpiration()
+            .expirationPolicy(ExpirationPolicy.ACCESSED)
+            .build();
+        duration = durationSec;
+    }
+
+    public MapStringStore(){
+        this(DEFAULT_MAX_SIZE, DEFAULT_DURATION);
+    }
 
     @Override
     public String get(final String key) {
@@ -34,7 +50,7 @@ public class MapStringStore implements StringStore {
 
     @Override
     public Boolean set(final String key, final String value) {
-        map.put(key, value, ExpirationPolicy.ACCESSED, DEFAULT_DURATION, TimeUnit.SECONDS);
+        map.put(key, value, ExpirationPolicy.ACCESSED, duration, TimeUnit.SECONDS);
         return true;
     }
 
