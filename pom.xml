@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.plooh.adssi</groupId>
 	<artifactId>string-store</artifactId>
-	<version>0.0.7</version>
+	<version>0.0.8-SNAPSHOT</version>
 	<name>string-store</name>
 	<description>Store Strings</description>
 	<packaging>pom</packaging>
@@ -33,7 +33,7 @@
 		<connection>scm:git:git://github.com/dialchain/string-store.git</connection>
 		<developerConnection>scm:git:ssh://git@github.com/dialchain/string-store.git</developerConnection>
 		<url>https://github.com/dialchain/string-store</url>
-		<tag>string-store-0.0.7</tag>
+		<tag>HEAD</tag>
   </scm>
 
 	<properties>
