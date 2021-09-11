@@ -44,13 +44,13 @@ public class MapStringStore implements StringStore {
 
     @Override
     public Boolean set(final String key, final String value, final Long expSec) {
-        map.put(key, value, ExpirationPolicy.ACCESSED, expSec, TimeUnit.SECONDS);
+        map.put(key, value, ExpirationPolicy.CREATED, expSec, TimeUnit.SECONDS);
         return true;
     }
 
     @Override
     public Boolean set(final String key, final String value) {
-        map.put(key, value, ExpirationPolicy.ACCESSED, duration, TimeUnit.SECONDS);
+        map.put(key, value, ExpirationPolicy.CREATED, duration, TimeUnit.SECONDS);
         return true;
     }
 
