@@ -3,6 +3,7 @@ package com.plooh.adssi.store.map;
 import com.plooh.adssi.store.api.StringStore;
 import java.util.Set;
 import java.util.concurrent.TimeUnit;
+import net.jodah.expiringmap.ExpirationListener;
 import net.jodah.expiringmap.ExpirationPolicy;
 import net.jodah.expiringmap.ExpiringMap;
 
@@ -28,9 +29,19 @@ public class MapStringStore implements StringStore {
         map = ExpiringMap.builder()
             .maxSize(maxSize)
             .variableExpiration()
-            .expirationPolicy(ExpirationPolicy.ACCESSED)
+            .expirationPolicy(ExpirationPolicy.CREATED)
             .build();
         duration = durationSec;
+    }
+
+    public MapStringStore addAsyncExpirationListener(ExpirationListener<String, String> listener){
+        this.map.addAsyncExpirationListener(listener);
+        return this;
+    }
+
+    public MapStringStore addExpirationListener(ExpirationListener<String, String> listener){
+        this.map.addExpirationListener(listener);
+        return this;
     }
 
     public MapStringStore(){
